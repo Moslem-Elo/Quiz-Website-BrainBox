@@ -1,7 +1,6 @@
-package htwberlin.Projekt;
+package htwberlin.Projekt.Entitys;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,18 +9,21 @@ import java.util.Objects;
 @Entity
 public class Quiz {
 
-    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
+    @Column(nullable = false)
     String title;
 
     @ManyToOne
     @JoinColumn(name = "theme_id")
     Theme theme;
 
-    String difficulty;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)        
+    Difficulty difficulty;
+
 
     @OneToMany(mappedBy = "quiz")
     private List<Question> question = new ArrayList<>();
@@ -29,7 +31,7 @@ public class Quiz {
     public Quiz() {
     }
 
-    public Quiz(String title, Theme theme, String difficulty) {
+    public Quiz(String title, Theme theme, Difficulty difficulty) {
         this.title = title;
         this.theme = theme;
         this.difficulty = difficulty;
@@ -61,11 +63,11 @@ public class Quiz {
         this.theme = theme;
     }
 
-    public String getDifficulty() {
+    public Difficulty getDifficulty() {
         return difficulty;
     }
 
-    public void setDifficulty(String difficulty) {
+    public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
     }
 
@@ -87,5 +89,11 @@ public class Quiz {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public enum Difficulty {
+        EASY,
+        MEDIUM,
+        HARD
     }
 }

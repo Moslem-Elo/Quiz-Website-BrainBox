@@ -1,4 +1,4 @@
-package htwberlin.Projekt;
+package htwberlin.Projekt.Entitys;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

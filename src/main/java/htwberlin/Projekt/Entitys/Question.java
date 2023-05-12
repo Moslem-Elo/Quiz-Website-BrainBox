@@ -1,7 +1,6 @@
-package htwberlin.Projekt;
+package htwberlin.Projekt.Entitys;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +8,11 @@ import java.util.List;
 @Entity
 public class Question {
 
-    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @Column(nullable = false)
     private String text;
 
     @ManyToOne

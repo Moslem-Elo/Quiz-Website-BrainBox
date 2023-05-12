@@ -1,5 +1,6 @@
-package htwberlin.Projekt;
+package htwberlin.Projekt.Entitys;
 
+import htwberlin.Projekt.Entitys.Quiz;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
