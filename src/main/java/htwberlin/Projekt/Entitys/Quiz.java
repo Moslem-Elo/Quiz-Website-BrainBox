@@ -21,9 +21,9 @@ public class Quiz {
     @Column(nullable = false)        
     Difficulty difficulty;
 
-
-    @OneToMany(mappedBy = "quiz")
+    @OneToOne
     private List<Question> question = new ArrayList<>();
+
 
     public Quiz() {
     }
@@ -33,7 +33,6 @@ public class Quiz {
         this.difficulty = difficulty;
     }
 
-//Todo immer zuerst die id aufrufen dann eine Operation zu dieser iD im mapping pfad
 
     public Long getId() {
         return id;
@@ -51,13 +50,7 @@ public class Quiz {
         this.title = titel;
     }
 
-    public Theme getTheme() {
-        return theme;
-    }
 
-    public void setTheme(Theme theme) {
-        this.theme = theme;
-    }
 
     public Difficulty getDifficulty() {
         return difficulty;
@@ -75,16 +68,12 @@ public class Quiz {
         this.question = question;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Quiz quiz)) return false;
-        return id.equals(quiz.id) && title.equals(quiz.title) && theme.equals(quiz.theme) && difficulty.equals(quiz.difficulty) && Objects.equals(question, quiz.question);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+    public enum Theme {
+        Allgemeinwissen,
+        Programmierkenntnisse,
+        Mathematik,
+        Sprachen,
+        Logik
     }
 
     public enum Difficulty {
@@ -92,4 +81,3 @@ public class Quiz {
         MEDIUM,
         HARD
     }
-}
