@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 @Entity
 public class Question {
 
@@ -21,6 +23,12 @@ public class Question {
 
     @OneToMany(mappedBy = "answer")
     private List<Answer> answers = new ArrayList<>();
+
+    //Todo antworten in die question klasse implentieren answer als kLASSE UND dann in einen answer
+    // ist packen mit dem Datentyp answer der den Boolean coreect beinhaltet
+
+    //Todo Theme als enum deklarieren
+    //ToDo question als Liste in Quiz implentieren der DatenTyp Question
 
     public Question() {
     }

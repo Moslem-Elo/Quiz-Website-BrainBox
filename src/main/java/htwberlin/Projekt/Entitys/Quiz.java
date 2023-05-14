@@ -16,9 +16,6 @@ public class Quiz {
     @Column(nullable = false)
     String title;
 
-    @ManyToOne
-    @JoinColumn(name = "theme_id")
-    Theme theme;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)        
@@ -31,13 +28,12 @@ public class Quiz {
     public Quiz() {
     }
 
-    public Quiz(String title, Theme theme, Difficulty difficulty) {
+    public Quiz(String title, Difficulty difficulty) {
         this.title = title;
-        this.theme = theme;
         this.difficulty = difficulty;
     }
 
-
+//Todo immer zuerst die id aufrufen dann eine Operation zu dieser iD im mapping pfad
 
     public Long getId() {
         return id;
