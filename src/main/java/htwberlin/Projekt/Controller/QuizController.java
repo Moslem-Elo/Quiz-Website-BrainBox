@@ -15,25 +15,25 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/quiz")
+@RequestMapping("/quizzes")
 public class QuizController {
 
     @Autowired
     private QuizService quizService;
 
-    @GetMapping("/quiz/getQuiz/{id}")
-    public Optional<Quiz> getQuiz(@PathVariable Long id) {
-        return quizService.findById(id);
+    @GetMapping("/{quizId}")
+    public Optional<Quiz> getQuiz(@PathVariable Long quizId) {
+        return quizService.findById(quizId);
 
     }
 
-    @PostMapping("/quiz/create")
+    @PostMapping("/create")
     public ResponseEntity<Quiz> createQuiz(@RequestBody Quiz quiz) {
         Quiz createdQuiz = quizService.save(quiz);
-        return ResponseEntity.created(URI.create("/api/quiz/" + createdQuiz.getId())).body(createdQuiz);
+        return ResponseEntity.created(URI.create("/quizzes/" + createdQuiz.getId())).body(createdQuiz);
     }
 
-    @PutMapping("/quiz/update/{id}")
+    @PutMapping("/{id}/update")
     public ResponseEntity<Quiz> updateQuiz(@PathVariable Long id, @RequestBody Quiz quiz) {
         Quiz updatedQuiz = quizService.update(id, quiz);
         if (updatedQuiz != null) {
@@ -43,12 +43,12 @@ public class QuizController {
         }
     }
 
-    @DeleteMapping("/quiz/delete/{id}")
+    @DeleteMapping("/{id}/delete")
     public void  deleteQuiz(@PathVariable Long id) {
         quizService.deleteById(id);
     }
 
-    @GetMapping("/")
+    @GetMapping("/title")
     public List<Quiz> getQuizzesByTitle(@RequestParam(name = "title", required = false) String title) {
         if (title != null) {
             return quizService.findByTitle(title);
