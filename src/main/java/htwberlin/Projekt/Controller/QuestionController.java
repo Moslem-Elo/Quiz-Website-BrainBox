@@ -17,7 +17,7 @@ public class QuestionController {
         @Autowired
         private QuestionService questionService;
 
-        @PostMapping("/quiz/question/create")
+        @PostMapping("/create")
         public ResponseEntity<Question> createQuestion(@RequestBody Question question) {
             Question createdQuestion = questionService.createQuestion(question);
             return new ResponseEntity<>(createdQuestion, HttpStatus.CREATED);
@@ -37,8 +37,8 @@ public class QuestionController {
 
         @PutMapping("/{id}")
         public ResponseEntity<Void> updateQuestion(@PathVariable Long id, @RequestBody Question question) {
-            question.setId(id);
-            questionService.updateQuestion(question);
+
+            questionService.updateQuestion(id, question);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 

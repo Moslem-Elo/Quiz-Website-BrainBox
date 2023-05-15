@@ -6,19 +6,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
+@Entity
 public class Question {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @Column(nullable = false)
     private String text;
 
+
+    @ManyToMany
     private List<Answer> answers = new ArrayList<>();
 
     public Question() {
     }
 
-    public Question(String text) {
+    public Question(String text, List<Answer> answers) {
         this.text = text;
+        this.answers = answers;
     }
 
 

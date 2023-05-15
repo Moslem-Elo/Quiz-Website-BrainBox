@@ -16,12 +16,22 @@ public class QuizService {
     private QuizRepository quizRepository;
 
     public Quiz save(Quiz quiz) {
+
         return quizRepository.save(quiz);
     }
 
     public Quiz update(Long id, Quiz quiz){
-
-        return quizRepository.save(quiz);
+        Optional<Quiz> optionalQuiz = quizRepository.findById(id);
+        if (optionalQuiz.isPresent()) {
+            Quiz existingQuiz = optionalQuiz.get();
+            existingQuiz.setTitle(quiz.getTitle());
+            existingQuiz.setDifficulty(quiz.getDifficulty());
+            existingQuiz.setTheme(quiz.getTheme());
+            existingQuiz.setQuestion(quiz.getQuestion());
+            return quizRepository.save(existingQuiz);
+        } else {
+            return null; // oder eine Exception werfen, wenn das Quiz nicht gefunden wurde
+        }
     }
 
     public void deleteById(Long id) {

@@ -12,27 +12,41 @@ public class Quiz {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(nullable = false)
     String title;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    Theme theme;
+
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)        
+    @Column(nullable = false)
     Difficulty difficulty;
 
-    @OneToOne
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "quiz_id")
     private List<Question> question = new ArrayList<>();
 
 
     public Quiz() {
     }
 
-    public Quiz(String title, Difficulty difficulty) {
+    public Quiz(String title, Difficulty difficulty,Theme theme) {
         this.title = title;
         this.difficulty = difficulty;
+        this.theme = theme;
     }
 
+
+    public Theme getTheme() {
+        return theme;
+    }
+
+    public void setTheme(Theme theme) {
+        this.theme = theme;
+    }
 
     public Long getId() {
         return id;
@@ -46,10 +60,9 @@ public class Quiz {
         return title;
     }
 
-    public void setTitle(String titel) {
-        this.title = titel;
+    public void setTitle(String title) {
+        this.title = title;
     }
-
 
 
     public Difficulty getDifficulty() {
@@ -81,3 +94,5 @@ public class Quiz {
         MEDIUM,
         HARD
     }
+
+}
