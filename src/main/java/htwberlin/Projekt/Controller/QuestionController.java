@@ -21,21 +21,21 @@ public class QuestionController {
             return new ResponseEntity<>(createdQuestion, HttpStatus.CREATED);
         }
 
-        @GetMapping("/{id}")
+        @GetMapping("/{id}/get-question")
         public ResponseEntity<Question> getQuestionById(@PathVariable Long id) {
             Question question = questionService.getQuestionById(id);
             return new ResponseEntity<>(question, HttpStatus.OK);
         }
 
 
-        @PutMapping("/{id}")
+        @PutMapping("/{id}/update-question")
         public ResponseEntity<Void> updateQuestion(@PathVariable Long id, @RequestBody Question question) {
 
             questionService.updateQuestion(id, question);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
-        @DeleteMapping("/{id}")
+        @DeleteMapping("/{id}/delete-question")
         public ResponseEntity<Void> deleteQuestion(@PathVariable Long id) {
             questionService.deleteQuestion(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
