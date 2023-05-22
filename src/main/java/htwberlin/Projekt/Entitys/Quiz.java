@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 public class Quiz {
@@ -95,4 +94,16 @@ public class Quiz {
         HARD
     }
 
+
+
+    @Override
+    public String toString() {
+        return "Quiz{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", theme=" + theme +
+                ", difficulty=" + difficulty +
+                ", question=" + question +
+                '}';
+    }
 }

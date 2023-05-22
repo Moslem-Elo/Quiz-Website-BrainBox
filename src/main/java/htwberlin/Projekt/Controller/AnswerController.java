@@ -7,16 +7,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/answers")
+@RequestMapping("/answer")
 public class AnswerController {
 
     @Autowired
-    private AnswerService answerService;
+    private final AnswerService answerService;
 
-    @PostMapping("/create")
+    public AnswerController(AnswerService answerService) {
+        this.answerService = answerService;
+    }
+
+    @GetMapping("/get-answers")
+    public Iterable<Answer> getAllAnswers(){
+       return answerService.getAllAnswers();
+    }
+
+    @PostMapping("/add")
     public Answer createAnswer(@RequestBody Answer answer) {
-        Answer createdAnswer = answerService.createAnswer(answer);
-        return answer;
+        return answerService.createAnswer(answer);
+
     }
 
     @GetMapping("/{id}/get-answer")

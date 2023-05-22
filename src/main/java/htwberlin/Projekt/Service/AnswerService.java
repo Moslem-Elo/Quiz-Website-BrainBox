@@ -18,6 +18,11 @@ public class AnswerService {
         return answerRepository.save(answer);
     }
 
+    public Iterable<Answer> getAllAnswers(){
+
+        return answerRepository.findAll();
+    }
+
     public Answer getAnswerById(Long id) {
         Optional<Answer> optionalAnswer = answerRepository.findById(id);
         if (optionalAnswer.isPresent()) {
