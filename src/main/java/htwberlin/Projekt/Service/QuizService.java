@@ -53,9 +53,7 @@ public class QuizService {
         return quizRepository.findByTitleContainingIgnoreCase(title);
     }
 
-    public List<Quiz> findByTheme(String theme) {
-        return quizRepository.findByTopic(theme);
-    }
+
 
     public List<Quiz> findByDifficulty(String difficulty) {
         return quizRepository.findByDifficulty(difficulty);

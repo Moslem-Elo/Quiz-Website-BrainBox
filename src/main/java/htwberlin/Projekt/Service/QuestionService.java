@@ -37,9 +37,7 @@ public class QuestionService {
         }
     }
 
-    public List<Question> getQuestionsByQuizId(Long quizId) {
-        return questionRepository.findByQuizId(quizId);
-    }
+
 
     public void deleteQuestion(Long id) {
         questionRepository.deleteById(id);
