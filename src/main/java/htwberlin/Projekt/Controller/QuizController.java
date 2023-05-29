@@ -5,6 +5,7 @@ import htwberlin.Projekt.Service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -14,6 +15,11 @@ public class QuizController {
 
     @Autowired
     private QuizService quizService;
+
+    @GetMapping("/get-all")
+    public List<Quiz> getAllQuiz(){
+        return quizService.findAll();
+    }
 
     @GetMapping("/{id}/get-quiz")
     public Optional<Quiz> getQuiz(@PathVariable Long id) {
