@@ -22,7 +22,7 @@ public class AnswerController {
        return answerService.getAllAnswers();
     }
 
-    @PostMapping("/add")
+    @PostMapping("/create")
     public Answer createAnswer(@RequestBody Answer answer) {
         return answerService.createAnswer(answer);
 
