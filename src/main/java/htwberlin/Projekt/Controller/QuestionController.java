@@ -1,5 +1,6 @@
 package htwberlin.Projekt.Controller;
 
+import htwberlin.Projekt.Entitys.Answer;
 import htwberlin.Projekt.Entitys.Question;
 import htwberlin.Projekt.Service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/quiz/question")
+@RequestMapping("/question")
 public class QuestionController {
 
 
@@ -22,9 +25,9 @@ public class QuestionController {
         }
 
         @GetMapping("/{id}/get-question")
-        public ResponseEntity<Question> getQuestionById(@PathVariable Long id) {
+        public Question getQuestionById(@PathVariable Long id) {
             Question question = questionService.getQuestionById(id);
-            return new ResponseEntity<>(question, HttpStatus.OK);
+            return question;
         }
 
 

@@ -24,18 +24,18 @@ public class Quiz {
     @Column(nullable = false)
     Difficulty difficulty;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "quiz_id")
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Question> question = new ArrayList<>();
 
 
     public Quiz() {
     }
 
-    public Quiz(String title, Difficulty difficulty,Theme theme) {
+    public Quiz(String title, Difficulty difficulty,Theme theme, List<Question> question) {
         this.title = title;
         this.difficulty = difficulty;
         this.theme = theme;
+        this.question = question;
     }
 
 
@@ -89,9 +89,9 @@ public class Quiz {
     }
 
     public enum Difficulty {
-        EASY,
-        MEDIUM,
-        HARD
+        Easy,
+        Medium,
+        Hard
     }
 
 

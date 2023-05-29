@@ -9,15 +9,15 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/quizzes")
+@RequestMapping("/quiz")
 public class QuizController {
 
     @Autowired
     private QuizService quizService;
 
-    @GetMapping("/{quizId}")
-    public Optional<Quiz> getQuiz(@PathVariable Long quizId) {
-        return quizService.findById(quizId);
+    @GetMapping("/{id}/get-quiz")
+    public Optional<Quiz> getQuiz(@PathVariable Long id) {
+        return quizService.findById(id);
 
     }
 

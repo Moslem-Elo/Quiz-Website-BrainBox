@@ -17,7 +17,7 @@ public class Question {
     private String text;
 
 
-    @ManyToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Answer> answers = new ArrayList<>();
 
     public Question() {
