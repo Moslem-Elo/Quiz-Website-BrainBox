@@ -24,6 +24,12 @@ public class QuestionController {
             return new ResponseEntity<>(createdQuestion, HttpStatus.CREATED);
         }
 
+        @GetMapping("/get-all")
+        public List<Question> getAllQuestions(){
+            List<Question> questions = questionService.getAllQuestions();
+            return questions;
+        }
+
         @GetMapping("/{id}/get-question")
         public Question getQuestionById(@PathVariable Long id) {
             Question question = questionService.getQuestionById(id);
