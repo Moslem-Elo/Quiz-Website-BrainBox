@@ -17,7 +17,7 @@ public class Question {
     private String text;
 
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     private List<Answer> answers = new ArrayList<>();
 
     public Question() {
@@ -45,6 +45,14 @@ public class Question {
         this.answers = answers;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Question{" +
@@ -53,4 +61,6 @@ public class Question {
                 ", answers=" + answers +
                 '}';
     }
+
+
 }

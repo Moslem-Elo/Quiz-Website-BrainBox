@@ -39,4 +39,4 @@ out/
 *.mv.db
 *.trace.db
 ### properties ###
-src/main/resources/application.properties
+/application.properties

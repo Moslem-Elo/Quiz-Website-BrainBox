@@ -1,6 +1,7 @@
 package htwberlin.Projekt.Service;
 
 import htwberlin.Projekt.Entitys.Quiz;
+import htwberlin.Projekt.Repositorys.QuestionRepository;
 import htwberlin.Projekt.Repositorys.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +15,14 @@ public class QuizService {
 
     @Autowired
     private QuizRepository quizRepository;
+    @Autowired
+    private QuestionRepository questionRepository;
 
     public Quiz save(Quiz quiz) {
 
         return quizRepository.save(quiz);
     }
+
 
     public Quiz update(Long id, Quiz quiz){
         Optional<Quiz> optionalQuiz = quizRepository.findById(id);

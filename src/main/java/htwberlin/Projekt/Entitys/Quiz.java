@@ -24,7 +24,7 @@ public class Quiz {
     @Column(nullable = false)
     Difficulty difficulty;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<Question> question = new ArrayList<>();
 
 
